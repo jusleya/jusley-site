@@ -25,7 +25,9 @@
     ],
     "arrow-body-style": ["warn", "as-needed"],
     "react/forbid-prop-types": 0,
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-unused-vars": "warn",
+    "react/react-in-jsx-scope": "off"
   },
   "settings": {
     "import/resolver": {
@@ -33,12 +35,3 @@
     }
   }
 }
-//   parserOptions: {
-//     ecmaFeatures: { jsx: true },
-//     ecmaVersion: 12,
-//     sourceType: 'module',
-//   },
-//   rules: {
-//     'react/jsx-props-no-spreading': 'off',
-//     'react/jsx-curly-brace-presence': 'off',
-//   },
