@@ -27,7 +27,9 @@
     "react/forbid-prop-types": 0,
     "import/prefer-default-export": "off",
     "no-unused-vars": "warn",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
   },
   "settings": {
     "import/resolver": {
