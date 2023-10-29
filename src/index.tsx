@@ -1,18 +1,25 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { ThemeProvider } from 'styled-components';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App';
+import GlobalStyles from './assets/styles/global';
+import theme from './assets/styles/theme';
+import Home from './pages/Home';
+import './assets/fonts/Inter/style.css';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Home />,
   },
 ]);
 
 // @ts-ignore
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  <ThemeProvider theme={theme}>
+    <GlobalStyles />
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </ThemeProvider>,
 );
