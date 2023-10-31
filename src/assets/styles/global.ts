@@ -13,12 +13,14 @@ export default createGlobalStyle`
     scroll-behavior: smooth;
   }
 
+  #root {
+    height: 100%;
+  }
+
   body {
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.70);
-    ${({ theme: { colors, typography } }) => css`
+    ${({ theme: { typography } }) => css`
       font-family: ${typography.family.primary};
-      background-color: ${colors.darkMode.background};
     `}
   }
 `;
