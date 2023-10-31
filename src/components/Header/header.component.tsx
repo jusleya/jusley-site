@@ -1,49 +1,69 @@
-import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-// import { ModeContext, type ModeContextType } from '../../contexts/modeContext';
 
-export const header = ({ typeMode }: any) => {
-  const [mode, setMode] = useState<string>('darkMode');
+// @ts-ignore
+import { ReactComponent as LogoImage } from '../../assets/images/logo.svg';
+import { useTypeMode } from '../../contexts/themeMode.context';
 
-  useEffect(() => {
-    typeMode(mode);
-  }, [mode]);
+export const header = () => {
+  const { setTypeMode, typeMode } = useTypeMode();
 
   return (
-    // <ModeContext.Provider value={{ mode, setMode }}>
-    <HeaderWrapper mode={mode}>
-      <p>img</p>
-      <Link href="">Sobre mim</Link>
-      <a href="">Linguagens</a>
-      <a href="">Experiências</a>
+    <HeaderWrapper>
+      <Logo />
+      <LinksWrapper>
+        <Link href="" mode={typeMode}>
+          Sobre mim
+        </Link>
+        <Link href="" mode={typeMode}>
+          Linguagens
+        </Link>
+        <Link href="" mode={typeMode}>
+          Experiências
+        </Link>
+      </LinksWrapper>
+
       <button
         onClick={() => {
-          mode === 'darkMode' ? setMode('whiteMode') : setMode('darkMode');
-          // setMode(!mode);
-          // mode.darkMode === true
-          //   ? setMode({ darkMode: false })
-          //   : setMode({ darkMode: true });
-          // console.log('clicou ', mode);
+          typeMode === 'darkMode'
+            ? setTypeMode('whiteMode')
+            : setTypeMode('darkMode');
         }}
       >
         mudou
       </button>
     </HeaderWrapper>
-    // </ModeContext.Provider>
   );
 };
 
-const HeaderWrapper = styled.nav<{ mode: string }>`
-  gap: 48px;
+const HeaderWrapper = styled.nav`
+  width: 100%;
   display: flex;
+  position: fixed;
   padding: 46px 70px;
-  justify-content: center;
-
-  /* ${({ theme: { colors }, mode }) => css`
-    background-color: ${colors[`${mode}`].background};
-  `} */
+  align-items: center;
+  justify-content: space-between;
 `;
 
-const Link = styled.a``;
+const Logo = styled(LogoImage)`
+  width: 81px;
+  height: auto;
+`;
+
+const LinksWrapper = styled.div`
+  gap: 48px;
+  display: flex;
+  justify-content: center;
+`;
+
+const Link = styled.a<{ mode: string }>`
+  text-decoration: none;
+  ${({ theme: { colors }, mode }) => css`
+    color: ${colors[`${mode}`].font};
+  `}
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 export default header;

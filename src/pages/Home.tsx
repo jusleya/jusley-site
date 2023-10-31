@@ -1,14 +1,13 @@
-import { /* useContext, */ type SetStateAction, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { useTypeMode } from '../contexts/themeMode.context';
 import Header from '../components/Header/header.component';
-// import { ModeContext } from '../contexts/modeContext';
 
 const Home = () => {
-  const [mode, setMode] = useState<string>('darkMode');
+  const { typeMode } = useTypeMode();
 
   return (
-    <Wrapper mode={mode}>
-      <Header typeMode={(mode: SetStateAction<string>) => setMode(mode)} />
+    <Wrapper mode={typeMode}>
+      <Header />
     </Wrapper>
   );
 };
