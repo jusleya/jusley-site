@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "preserve"
   },
-  "include": ["src", "src/custom.d.ts"]
+  "include": ["src", "src/assets.d.ts"]
 }

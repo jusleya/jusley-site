@@ -1,25 +1,36 @@
 import styled, { css } from 'styled-components';
+import { useTypeMode } from '../../contexts/themeMode.context';
 
 // @ts-ignore
 import { ReactComponent as LogoImage } from '../../assets/images/logo.svg';
-import { useTypeMode } from '../../contexts/themeMode.context';
+import { Link } from 'react-router-dom';
 
-export const header = () => {
+export const Header = () => {
   const { setTypeMode, typeMode } = useTypeMode();
+  // const [scroll, setScroll] = useState(0);
+
+  // const handleScroll = () => setScroll(document.documentElement.scrollTop);
+
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
+
+  // const className = scroll > 50 ? 'navbar navbar-scrolled' : '';
 
   return (
     <HeaderWrapper>
       <Logo />
       <LinksWrapper>
-        <Link href="" mode={typeMode}>
+        <LinkHeader to="" typeMode={typeMode}>
           Sobre mim
-        </Link>
-        <Link href="" mode={typeMode}>
+        </LinkHeader>
+        <LinkHeader to="" typeMode={typeMode}>
           Linguagens
-        </Link>
-        <Link href="" mode={typeMode}>
+        </LinkHeader>
+        <LinkHeader to="" typeMode={typeMode}>
           Experiências
-        </Link>
+        </LinkHeader>
       </LinksWrapper>
 
       <button
@@ -36,16 +47,25 @@ export const header = () => {
 };
 
 const HeaderWrapper = styled.nav`
+  height: 73px;
   width: 100%;
   display: flex;
-  position: fixed;
-  padding: 46px 70px;
+  /* position: fixed; */
+  padding: 24px 70px;
   align-items: center;
+  background-color: transparent;
   justify-content: space-between;
+
+  /* .sticky {
+    position: fixed;
+    background-color: rebeccapurple;
+    top: 0;
+    left: 0;
+  } */
 `;
 
 const Logo = styled(LogoImage)`
-  width: 81px;
+  width: 56px;
   height: auto;
 `;
 
@@ -55,10 +75,10 @@ const LinksWrapper = styled.div`
   justify-content: center;
 `;
 
-const Link = styled.a<{ mode: string }>`
+const LinkHeader = styled(Link)<{ typeMode: string }>`
   text-decoration: none;
-  ${({ theme: { colors }, mode }) => css`
-    color: ${colors[`${mode}`].font};
+  ${({ theme: { colors }, typeMode }) => css`
+    color: ${colors[`${typeMode}`].font};
   `}
 
   &:hover {
@@ -66,4 +86,4 @@ const Link = styled.a<{ mode: string }>`
   }
 `;
 
-export default header;
+export default Header;
