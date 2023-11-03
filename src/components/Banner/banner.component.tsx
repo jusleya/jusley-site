@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 // @ts-ignore
 import { useTypeMode } from '../../contexts/themeMode.context';
-import video from '../../assets/images/video.mp4';
+import video from '../../assets/videos/banner.mp4';
 
 export const Banner = () => {
   const { typeMode } = useTypeMode();
@@ -10,6 +10,7 @@ export const Banner = () => {
   return (
     <>
       <BannerWrapper src={video} loop autoPlay muted></BannerWrapper>
+      <FilterBanner typeMode={typeMode} />
       <Name>{`<Jusley Tavares />`}</Name>
     </>
   );
@@ -22,7 +23,26 @@ const BannerWrapper = styled.video`
   display: flex;
   object-fit: cover;
   position: absolute;
-  filter: brightness(0.4);
+
+  @media (max-width: 800px) {
+    height: 399px;
+  }
+`;
+
+const FilterBanner = styled.div<{ typeMode: string }>`
+  z-index: -1;
+  width: 100%;
+  height: 508px;
+  opacity: 0.75;
+  position: absolute;
+
+  ${({ theme: { colors }, typeMode }) => css`
+    background-color: ${colors[`${typeMode}`].background};
+  `}
+
+  @media (max-width: 800px) {
+    height: 399px;
+  }
 `;
 
 const Name = styled.h1`
@@ -43,6 +63,10 @@ const Name = styled.h1`
   ${({ theme: { colors } }) => css`
     color: ${colors.darkMode.font};
   `}
+
+  @media (max-width: 800px) {
+    font-size: 30px;
+  }
 `;
 
 export default Banner;

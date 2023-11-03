@@ -7,20 +7,23 @@ const Home = () => {
   const { typeMode } = useTypeMode();
 
   return (
-    <Wrapper mode={typeMode}>
+    <Wrapper typeMode={typeMode}>
       <Header />
       <Banner />
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div<{ mode: string }>`
+const Wrapper = styled.div<{ typeMode: string }>`
+  z-index: 1;
+  height: 100%;
   display: flex;
+  position: relative;
   flex-direction: column;
 
-  ${({ theme: { colors }, mode }) => css`
-    color: ${colors[`${mode}`].font};
-    /* background-color: ${colors[`${mode}`].background}; */
+  ${({ theme: { colors }, typeMode }) => css`
+    color: ${colors[`${typeMode}`].font};
+    background-color: ${colors[`${typeMode}`].background};
   `}
 `;
 
