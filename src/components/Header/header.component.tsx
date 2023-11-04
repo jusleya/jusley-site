@@ -15,23 +15,23 @@ import sun from '../../assets/images/icons/sun.svg';
 
 export const Header = () => {
   const { setTypeMode, typeMode } = useTypeMode();
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean | null>(null);
+  console.log(open);
 
   function handleOnChange() {
     if (typeMode === 'darkMode') setTypeMode('whiteMode');
     else setTypeMode('darkMode');
   }
-  console.log(open);
 
   const linksMenu = () => (
     <>
-      <LinkHeader to="" typeMode={typeMode}>
+      <LinkHeader to="" typeMode={typeMode} open={open}>
         Sobre mim
       </LinkHeader>
-      <LinkHeader to="" typeMode={typeMode}>
+      <LinkHeader to="" typeMode={typeMode} open={open}>
         Linguagens
       </LinkHeader>
-      <LinkHeader to="" typeMode={typeMode}>
+      <LinkHeader to="" typeMode={typeMode} open={open}>
         Experiências
       </LinkHeader>
     </>
@@ -40,25 +40,23 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <Logo />
-      <Menu onClick={() => setOpen(!open)} />
+      <Menu onClick={() => (open === null ? setOpen(true) : setOpen(!open))} />
 
-      {open && (
-        <MenuMobile open={open} typeMode={typeMode}>
-          <Close onClick={() => setOpen(!open)} />
-          <MobileWrapper>
-            {linksMenu()}
+      <MenuMobile open={open} typeMode={typeMode}>
+        <CloseIcon typeMode={typeMode} onClick={() => setOpen(!open)} />
+        <MobileWrapper>
+          {linksMenu()}
 
-            <SwicthMode htmlFor="checkbox" typeMode={typeMode} open={open}>
-              <input
-                id="checkbox"
-                type="checkbox"
-                checked={typeMode === 'darkMode'}
-                onChange={handleOnChange}
-              />
-            </SwicthMode>
-          </MobileWrapper>
-        </MenuMobile>
-      )}
+          <SwicthMode htmlFor="checkbox" typeMode={typeMode} open={open}>
+            <input
+              id="checkbox"
+              type="checkbox"
+              checked={typeMode === 'darkMode'}
+              onChange={handleOnChange}
+            />
+          </SwicthMode>
+        </MobileWrapper>
+      </MenuMobile>
 
       <DeskWrapper>{linksMenu()}</DeskWrapper>
 
@@ -73,6 +71,14 @@ export const Header = () => {
     </HeaderWrapper>
   );
 };
+
+const CloseIcon = styled(Close)<{ typeMode: string }>`
+  ${({ theme: { colors }, typeMode }) => css`
+    path {
+      stroke: ${colors[`${typeMode}`].font};
+    }
+  `}
+`;
 
 const DeskWrapper = styled.div`
   gap: 48px;
@@ -98,14 +104,49 @@ const HeaderWrapper = styled.nav`
   }
 `;
 
-const LinkHeader = styled(Link)<{ typeMode: string }>`
+const LinkHeader = styled(Link)<{ typeMode: string; open?: boolean | null }>`
+  position: relative;
   text-decoration: none;
   ${({ theme: { colors }, typeMode }) => css`
     color: ${colors[`${typeMode}`].font};
   `}
 
+  &:after {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 0;
+    width: 0;
+    background: ${({ theme: { colors } }) => colors.default.pink};
+    height: 4px;
+  }
+
+  &:after {
+    opacity: 0;
+    transition:
+      opacity 0 ease,
+      width 0 ease;
+  }
+
   &:hover {
-    text-decoration: underline;
+    &:after {
+      width: 100%;
+      opacity: 1;
+      transition:
+        opacity 0.5s ease,
+        width 0.5s ease;
+    }
+  }
+
+  @media (max-width: 800px) {
+    ${({ open }) =>
+      open
+        ? css`
+            display: block;
+          `
+        : css`
+            display: none;
+          `}
   }
 `;
 
@@ -122,16 +163,13 @@ const Menu = styled(MenuIcon)`
   }
 `;
 
-const MenuMobile = styled.div<{ typeMode: string; open: boolean }>`
+const MenuMobile = styled.div<{ typeMode: string; open: boolean | null }>`
   display: none;
 
   @media (max-width: 800px) {
     top: 0;
-    left: 0;
-    width: 100%;
     height: 100%;
     display: flex;
-    padding: 45px 24px;
     position: absolute;
     align-items: flex-end;
     flex-direction: column;
@@ -139,25 +177,54 @@ const MenuMobile = styled.div<{ typeMode: string; open: boolean }>`
     ${({ theme: { colors }, typeMode }) => css`
       background-color: ${colors[`${typeMode}`].background};
     `}
-
-    @keyframes openSide {
-      from {
-        transform: translateX(300px);
-      }
-      to {
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes closeSide {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(300px);
-      }
-    }
-    animation: openSide 0.25s linear;
+    ${({ open }) =>
+      open === true
+        ? css`
+            right: 0;
+            width: 100%;
+            padding: 45px 24px;
+            svg {
+              width: auto;
+            }
+            animation: openSide 0.3s linear;
+            @keyframes openSide {
+              from {
+                width: 0;
+                svg {
+                  width: 0;
+                }
+              }
+              to {
+                width: 100%;
+                svg {
+                  width: auto;
+                }
+              }
+            }
+          `
+        : open === false &&
+          css`
+            right: 0;
+            width: 0;
+            svg {
+              width: 0;
+            }
+            animation: closeSide 0.3s linear;
+            @keyframes closeSide {
+              from {
+                width: 100%;
+                svg {
+                  width: auto;
+                }
+              }
+              to {
+                width: 0;
+                svg {
+                  width: 0;
+                }
+              }
+            }
+          `}
   }
 `;
 
@@ -172,7 +239,7 @@ const MobileWrapper = styled.div`
   }
 `;
 
-const SwicthMode = styled.label<{ typeMode: string; open?: boolean }>`
+const SwicthMode = styled.label<{ typeMode: string; open?: boolean | null }>`
   width: 28px;
   height: 16px;
   padding: 2px;

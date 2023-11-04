@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+import { useTypeMode } from '../../contexts/themeMode.context';
 
 // @ts-ignore
-import { useTypeMode } from '../../contexts/themeMode.context';
+import { ReactComponent as BannerRows } from '../../assets/images/icons/banner-rows.svg';
 import video from '../../assets/videos/banner.mp4';
 
 export const Banner = () => {
@@ -12,6 +13,8 @@ export const Banner = () => {
       <BannerWrapper src={video} loop autoPlay muted></BannerWrapper>
       <FilterBanner typeMode={typeMode} />
       <Name>{`<Jusley Tavares />`}</Name>
+      <Dev>front-end developer</Dev>
+      <RowsIcon />
     </>
   );
 };
@@ -26,6 +29,16 @@ const BannerWrapper = styled.video`
 
   @media (max-width: 800px) {
     height: 399px;
+  }
+`;
+
+const RowsIcon = styled(BannerRows)`
+  top: 493px;
+  margin-left: 70px;
+  position: absolute;
+
+  @media (max-width: 800px) {
+    display: none;
   }
 `;
 
@@ -48,6 +61,7 @@ const FilterBanner = styled.div<{ typeMode: string }>`
 const Name = styled.h1`
   font-size: 64px;
   margin-top: 62px;
+  font-weight: 800;
   text-align: center;
   text-transform: uppercase;
   background-image: linear-gradient(
@@ -66,6 +80,20 @@ const Name = styled.h1`
 
   @media (max-width: 800px) {
     font-size: 30px;
+  }
+`;
+
+const Dev = styled.p`
+  font-size: 40px;
+  font-weight: 200;
+  margin-top: 12px;
+  line-height: 121%;
+  text-align: center;
+  letter-spacing: 13.925px;
+
+  @media (max-width: 800px) {
+    font-size: 18px;
+    letter-spacing: 7.925px;
   }
 `;
 

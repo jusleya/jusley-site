@@ -11,4 +11,7 @@ export const colors = {
     switch: '#fff',
     switchHover: '#ddd',
   },
+  default: {
+    pink: '#d94766',
+  },
 };
