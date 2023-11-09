@@ -58,6 +58,25 @@ const FilterBanner = styled.div<{ typeMode: string }>`
   }
 `;
 
+const Dev = styled.p`
+  font-size: 40px;
+  font-weight: 200;
+  margin-top: 12px;
+  line-height: 121%;
+  text-align: center;
+  letter-spacing: 13.925px;
+
+  @media (max-width: 800px) {
+    font-size: 18px;
+    letter-spacing: 7.925px;
+  }
+  @media (min-width: 1900px) {
+    width: 1240px;
+    margin: 0 auto;
+    margin-top: 12px;
+  }
+`;
+
 const Name = styled.h1`
   font-size: 64px;
   margin-top: 62px;
@@ -81,19 +100,10 @@ const Name = styled.h1`
   @media (max-width: 800px) {
     font-size: 30px;
   }
-`;
-
-const Dev = styled.p`
-  font-size: 40px;
-  font-weight: 200;
-  margin-top: 12px;
-  line-height: 121%;
-  text-align: center;
-  letter-spacing: 13.925px;
-
-  @media (max-width: 800px) {
-    font-size: 18px;
-    letter-spacing: 7.925px;
+  @media (min-width: 1900px) {
+    width: 1240px;
+    margin: 0 auto;
+    margin-top: 62px;
   }
 `;
 

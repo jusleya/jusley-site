@@ -9,14 +9,12 @@ import { ReactComponent as LogoImage } from '../../assets/images/logo.svg';
 import { ReactComponent as Close } from '../../assets/images/icons/close.svg';
 // @ts-ignore
 import { ReactComponent as MenuIcon } from '../../assets/images/icons/menu-mobile.svg';
-// @ts-ignore
 import moon from '../../assets/images/icons/moon.svg';
 import sun from '../../assets/images/icons/sun.svg';
 
 export const Header = () => {
   const { setTypeMode, typeMode } = useTypeMode();
   const [open, setOpen] = useState<boolean | null>(null);
-  console.log(open);
 
   function handleOnChange() {
     if (typeMode === 'darkMode') setTypeMode('whiteMode');
@@ -98,9 +96,14 @@ const HeaderWrapper = styled.nav`
   align-items: center;
   background-color: transparent;
   justify-content: space-between;
+  /* position: fixed; */
 
   @media (max-width: 800px) {
     padding: 24px 32px 0;
+  }
+  @media (min-width: 1900px) {
+    width: 1240px;
+    margin: 0 auto;
   }
 `;
 
@@ -111,7 +114,7 @@ const LinkHeader = styled(Link)<{ typeMode: string; open?: boolean | null }>`
     color: ${colors[`${typeMode}`].font};
   `}
 
-  &:after {
+  &:before {
     content: '';
     position: absolute;
     top: 24px;
@@ -121,7 +124,7 @@ const LinkHeader = styled(Link)<{ typeMode: string; open?: boolean | null }>`
     height: 4px;
   }
 
-  &:after {
+  &:before {
     opacity: 0;
     transition:
       opacity 0 ease,
@@ -129,7 +132,7 @@ const LinkHeader = styled(Link)<{ typeMode: string; open?: boolean | null }>`
   }
 
   &:hover {
-    &:after {
+    &:before {
       width: 100%;
       opacity: 1;
       transition:
@@ -170,15 +173,21 @@ const MenuMobile = styled.div<{ typeMode: string; open: boolean | null }>`
     top: 0;
     height: 100%;
     display: flex;
+    z-index: 1;
     position: absolute;
     align-items: flex-end;
     flex-direction: column;
     justify-content: space-between;
+    svg {
+      width: 0;
+    }
+
     ${({ theme: { colors }, typeMode }) => css`
       background-color: ${colors[`${typeMode}`].background};
     `}
+
     ${({ open }) =>
-      open === true
+      open
         ? css`
             right: 0;
             width: 100%;
@@ -202,7 +211,7 @@ const MenuMobile = styled.div<{ typeMode: string; open: boolean | null }>`
               }
             }
           `
-        : open === false &&
+        : open !== null &&
           css`
             right: 0;
             width: 0;
