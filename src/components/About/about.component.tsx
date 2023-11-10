@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 // @ts-ignore
 import { ReactComponent as Circle } from '../../assets/images/icons/circle.svg';
-import me from '../../assets/images/me.png';
+// @ts-ignore
+import { ReactComponent as Row } from '../../assets/images/icons/row-image.svg';
+import jusley from '../../assets/images/jusley.png';
 import Title from '../Title/title.component';
 
 export const About = () => (
   <AboutWrapper>
     <ProfileWrapper>
-      <Profile src={me} alt="me" />
       <CircleIcon />
+      <Profile />
+      <RowIcon />
     </ProfileWrapper>
     <Text>
       <Title title="Sobre" />
@@ -51,18 +54,29 @@ const AboutWrapper = styled.div`
   }
 `;
 
+const CircleIcon = styled(Circle)`
+  left: 10px;
+  position: absolute;
+`;
+
 const ProfileWrapper = styled.div`
   position: relative;
 `;
 
-const Profile = styled.img`
-  z-index: 1;
-  position: relative;
+const Profile = styled.div`
+  width: 225px;
+  height: 210px;
   margin-top: 12px;
+  border-radius: 50%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-image: url(${jusley});
 `;
 
-const CircleIcon = styled(Circle)`
-  left: 10px;
+const RowIcon = styled(Row)`
+  left: 0;
+  top: 30px;
   position: absolute;
 `;
 

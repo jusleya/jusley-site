@@ -14,14 +14,15 @@ export const Banner = () => {
       <FilterBanner typeMode={typeMode} />
       <Name>{`<Jusley Tavares />`}</Name>
       <Dev>front-end developer</Dev>
-      <RowsIcon />
+      <RowsIcon>
+        <BannerRows />
+      </RowsIcon>
     </>
   );
 };
 
 const BannerWrapper = styled.video`
   width: 100%;
-  z-index: -1;
   height: 508px;
   display: flex;
   object-fit: cover;
@@ -32,18 +33,23 @@ const BannerWrapper = styled.video`
   }
 `;
 
-const RowsIcon = styled(BannerRows)`
+const RowsIcon = styled.div`
   top: 493px;
+  display: flex;
   margin-left: 70px;
   position: absolute;
 
   @media (max-width: 800px) {
     display: none;
   }
+  @media (min-width: 1900px) {
+    width: 1100px;
+    margin-left: 0;
+    justify-content: center;
+  }
 `;
 
 const FilterBanner = styled.div<{ typeMode: string }>`
-  z-index: -1;
   width: 100%;
   height: 508px;
   opacity: 0.75;
@@ -63,6 +69,7 @@ const Dev = styled.p`
   font-weight: 200;
   margin-top: 12px;
   line-height: 121%;
+  position: relative;
   text-align: center;
   letter-spacing: 13.925px;
 
@@ -81,6 +88,7 @@ const Name = styled.h1`
   font-size: 64px;
   margin-top: 62px;
   font-weight: 800;
+  position: relative;
   text-align: center;
   text-transform: uppercase;
   background-image: linear-gradient(

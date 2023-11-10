@@ -18,11 +18,9 @@ const Home = () => {
   );
 };
 const HeaderBanner = styled.div`
-  z-index: 1;
   height: 508px;
   grid-area: banner;
   display: flex;
-  position: relative;
   flex-direction: column;
 
   @media (max-width: 800px) {
@@ -32,7 +30,6 @@ const HeaderBanner = styled.div`
 const Wrapper = styled.div<{ typeMode: string }>`
   gap: 124px;
   display: grid;
-  position: relative;
   padding-bottom: 64px;
   grid-template-areas:
     'banner'

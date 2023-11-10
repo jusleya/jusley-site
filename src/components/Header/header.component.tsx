@@ -89,10 +89,12 @@ const DeskWrapper = styled.div`
 `;
 
 const HeaderWrapper = styled.nav`
-  height: 73px;
+  z-index: 1;
   width: 100%;
+  height: 73px;
   display: flex;
   padding: 24px 70px;
+  position: relative;
   align-items: center;
   background-color: transparent;
   justify-content: space-between;
@@ -171,7 +173,7 @@ const MenuMobile = styled.div<{ typeMode: string; open: boolean | null }>`
 
   @media (max-width: 800px) {
     top: 0;
-    height: 100%;
+    height: 100vh;
     display: flex;
     z-index: 1;
     position: absolute;
