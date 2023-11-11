@@ -3,6 +3,7 @@ import { useTypeMode } from '../contexts/themeMode.context';
 import Header from '../components/Header/header.component';
 import Banner from '../components/Banner/banner.component';
 import About from '../components/About/about.component';
+import Languages from '../components/Languages/languages.component';
 
 const Home = () => {
   const { typeMode } = useTypeMode();
@@ -14,6 +15,7 @@ const Home = () => {
         <Banner />
       </HeaderBanner>
       <About />
+      <Languages />
     </Wrapper>
   );
 };
@@ -33,7 +35,8 @@ const Wrapper = styled.div<{ typeMode: string }>`
   padding-bottom: 64px;
   grid-template-areas:
     'banner'
-    'about';
+    'about'
+    'language';
 
   ${({ theme: { colors }, typeMode }) => css`
     color: ${colors[`${typeMode}`].font};

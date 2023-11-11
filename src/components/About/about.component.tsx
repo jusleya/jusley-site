@@ -5,6 +5,8 @@ import { ReactComponent as Circle } from '../../assets/images/icons/circle.svg';
 import { ReactComponent as Row } from '../../assets/images/icons/row-image.svg';
 import jusley from '../../assets/images/jusley.png';
 import Title from '../Title/title.component';
+// @ts-ignore
+import { ReactComponent as Gradient } from '../../assets/images/icons/gradient.svg';
 
 export const About = () => (
   <AboutWrapper>
@@ -13,6 +15,8 @@ export const About = () => (
       <Profile />
       <RowIcon />
     </ProfileWrapper>
+
+    <GradientImage />
     <Text>
       <Title title="Sobre" />
       <p>
@@ -56,6 +60,11 @@ const AboutWrapper = styled.div`
 
 const CircleIcon = styled(Circle)`
   left: 10px;
+  position: absolute;
+`;
+const GradientImage = styled(Gradient)`
+  top: 270px;
+  width: 900px;
   position: absolute;
 `;
 
