@@ -6,19 +6,18 @@ import { ReactComponent as Row } from '../../assets/images/icons/row-image.svg';
 import jusley from '../../assets/images/jusley.png';
 import Title from '../Title/title.component';
 // @ts-ignore
-import { ReactComponent as Gradient } from '../../assets/images/icons/gradient.svg';
+// import { ReactComponent as GradientYellow } from '../../assets/images/icons/gradient-yellow.svg';
 
 export const About = () => (
   <AboutWrapper>
+    {/* <GradientYellowImage /> */}
     <ProfileWrapper>
       <CircleIcon />
       <Profile />
       <RowIcon />
     </ProfileWrapper>
-
-    <GradientImage />
     <Text>
-      <Title title="Sobre" />
+      <Title title="Sobre" id="sobre-mim" />
       <p>
         Oie, me chamo Jusley. Vou me apresentar rapidamente para vocês, mas
         primeiramente, vou tentar te ensinar a pronúncia do meu nome: Jus-lei
@@ -44,6 +43,7 @@ const AboutWrapper = styled.div`
   gap: 64px;
   grid-area: about;
   display: flex;
+  position: relative;
   align-items: center;
   padding-inline: 70px;
 
@@ -62,17 +62,20 @@ const CircleIcon = styled(Circle)`
   left: 10px;
   position: absolute;
 `;
-const GradientImage = styled(Gradient)`
-  top: 270px;
-  width: 900px;
-  position: absolute;
-`;
+
+// const GradientYellowImage = styled(GradientYellow)`
+//   top: 450px;
+//   width: auto;
+//   height: 700px;
+//   position: absolute;
+//   left: 330px;
+// `;
 
 const ProfileWrapper = styled.div`
   position: relative;
 `;
 
-const Profile = styled.div`
+const Profile = styled.figure`
   width: 225px;
   height: 210px;
   margin-top: 12px;
@@ -81,6 +84,11 @@ const Profile = styled.div`
   background-size: cover;
   background-position: center;
   background-image: url(${jusley});
+  transition: all 1s;
+
+  &:hover {
+    background-size: 140%;
+  }
 `;
 
 const RowIcon = styled(Row)`

@@ -4,6 +4,8 @@ import Header from '../components/Header/header.component';
 import Banner from '../components/Banner/banner.component';
 import About from '../components/About/about.component';
 import Languages from '../components/Languages/languages.component';
+// @ts-ignore
+import { ReactComponent as Gradient } from '../assets/images/icons/gradient.svg';
 
 const Home = () => {
   const { typeMode } = useTypeMode();
@@ -14,11 +16,25 @@ const Home = () => {
         <Header />
         <Banner />
       </HeaderBanner>
+      <GradientImage />
       <About />
       <Languages />
     </Wrapper>
   );
 };
+
+const GradientImage = styled(Gradient)`
+  top: 900px;
+  width: auto;
+  height: 800px;
+  position: absolute;
+  right: calc(100vw - 330px);
+
+  @media (max-width: 800px) {
+    right: calc(100vw - 230px);
+  }
+`;
+
 const HeaderBanner = styled.div`
   height: 508px;
   grid-area: banner;
@@ -29,6 +45,7 @@ const HeaderBanner = styled.div`
     height: 399px;
   }
 `;
+
 const Wrapper = styled.div<{ typeMode: string }>`
   gap: 124px;
   display: grid;

@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components';
 import { useTypeMode } from '../../contexts/themeMode.context';
 
-const Title: React.FC<{ title: string }> = ({ title }) => {
+const Title: React.FC<{ title: string; id?: string }> = ({ title, id }) => {
   const { typeMode } = useTypeMode();
 
-  return <TitleComponent typeMode={typeMode}>{title}</TitleComponent>;
+  return (
+    <TitleComponent id={id} typeMode={typeMode}>
+      {title}
+    </TitleComponent>
+  );
 };
 
 const TitleComponent = styled.h1<{ typeMode: string }>`
@@ -26,6 +30,10 @@ const TitleComponent = styled.h1<{ typeMode: string }>`
   ${({ theme: { colors }, typeMode }) => css`
     color: ${colors[`${typeMode}`].font};
   `}
+
+  @media (max-width: 800px) {
+    font-size: 24px;
+  }
 `;
 
 export default Title;

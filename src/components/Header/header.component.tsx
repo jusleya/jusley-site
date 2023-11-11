@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
 import { useTypeMode } from '../../contexts/themeMode.context';
 
 // @ts-ignore
@@ -23,13 +22,13 @@ export const Header = () => {
 
   const linksMenu = () => (
     <>
-      <LinkHeader to="" typeMode={typeMode} open={open}>
+      <LinkHeader href="#sobre-mim" typeMode={typeMode} open={open}>
         Sobre mim
       </LinkHeader>
-      <LinkHeader to="" typeMode={typeMode} open={open}>
+      <LinkHeader href="#linguagens-atuais" typeMode={typeMode} open={open}>
         Linguagens
       </LinkHeader>
-      <LinkHeader to="" typeMode={typeMode} open={open}>
+      <LinkHeader href="" typeMode={typeMode} open={open}>
         Experiências
       </LinkHeader>
     </>
@@ -109,7 +108,7 @@ const HeaderWrapper = styled.nav`
   }
 `;
 
-const LinkHeader = styled(Link)<{ typeMode: string; open?: boolean | null }>`
+const LinkHeader = styled.a<{ typeMode: string; open?: boolean | null }>`
   position: relative;
   text-decoration: none;
   ${({ theme: { colors }, typeMode }) => css`

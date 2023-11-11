@@ -68,9 +68,9 @@ const Dev = styled.p`
   font-size: 40px;
   font-weight: 200;
   margin-top: 12px;
-  line-height: 121%;
   position: relative;
   text-align: center;
+  line-height: 121.2%;
   letter-spacing: 13.925px;
 
   @media (max-width: 800px) {
@@ -90,6 +90,7 @@ const Name = styled.h1`
   font-weight: 800;
   position: relative;
   text-align: center;
+  line-height: 121.2%;
   text-transform: uppercase;
   background-image: linear-gradient(
     180deg,
