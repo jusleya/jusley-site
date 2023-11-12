@@ -29,6 +29,7 @@ const LanguagesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  justify-content: center;
 
   @media (max-width: 800px) {
     gap: 32px;
@@ -81,7 +82,7 @@ const LanguageBox = styled.div<{ typeMode: string }>`
   }
 
   ${({ theme: { colors }, typeMode }) => css`
-    background-color: ${colors[`${typeMode}`].background};
+    background-color: ${colors[`${typeMode}`].neutral};
   `}
 `;
 

@@ -1,9 +1,10 @@
 export const colors = {
   darkMode: {
     font: '#fff',
-    background: '#161616',
+    background: '#101010',
     switch: '#585858',
     switchHover: '#282828',
+    neutral: '#161616',
   },
   whiteMode: {
     font: '#000',
