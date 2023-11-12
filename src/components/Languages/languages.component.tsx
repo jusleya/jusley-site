@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { useTypeMode } from '../../contexts/themeMode.context';
-import Title from '../Title/title.component';
-import { languages } from './languages';
+import Title from '../title/title.component';
+import { languages } from './languages.files';
 
 export const Languages = () => {
   const { typeMode } = useTypeMode();

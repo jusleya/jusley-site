@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 import { useTypeMode } from '../contexts/themeMode.context';
-import Header from '../components/Header/header.component';
-import Banner from '../components/Banner/banner.component';
-import About from '../components/About/about.component';
-import Languages from '../components/Languages/languages.component';
+import Header from '../components/header/header.component';
+import Banner from '../components/banner/banner.component';
+import About from '../components/about/about.component';
+import Languages from '../components/languages/languages.component';
 // @ts-ignore
 import { ReactComponent as Gradient } from '../assets/images/icons/gradient.svg';
+import Footer from '../components/footer/footer.component';
 
 const Home = () => {
   const { typeMode } = useTypeMode();
@@ -19,6 +20,7 @@ const Home = () => {
       <GradientImage />
       <About />
       <Languages />
+      <Footer />
     </Wrapper>
   );
 };
@@ -49,11 +51,11 @@ const HeaderBanner = styled.div`
 const Wrapper = styled.div<{ typeMode: string }>`
   gap: 124px;
   display: grid;
-  padding-bottom: 64px;
   grid-template-areas:
     'banner'
     'about'
-    'language';
+    'language'
+    'footer';
 
   ${({ theme: { colors }, typeMode }) => css`
     color: ${colors[`${typeMode}`].font};
