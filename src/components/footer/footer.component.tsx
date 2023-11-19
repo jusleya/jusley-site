@@ -4,6 +4,10 @@ import { useTypeMode } from '../../contexts/themeMode.context';
 import { ReactComponent as Mily } from '../../assets/images/mily.svg';
 // @ts-ignore
 import { ReactComponent as CopyrightIcon } from '../../assets/images/icons/copyright.svg';
+// @ts-ignore
+import { ReactComponent as LinkedinIcon } from '../../assets/images/icons/social/linkedin.svg';
+// @ts-ignore
+import { ReactComponent as GithubIcon } from '../../assets/images/icons/social/github.svg';
 
 export const Footer = () => {
   const { typeMode } = useTypeMode();
@@ -17,9 +21,24 @@ export const Footer = () => {
           <CopyrightIcon />
           <span>2023 - Designed by Sté & Developed by Ju</span>
         </Copyright>
-        <SocialMedia>
+        <SocialMedia typeMode={typeMode}>
           <p>{`<Jusley tavares/>`}</p>
-          <div></div>
+          <div>
+            <a
+              href="https://www.linkedin.com/in/jusleytavares/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LinkedinIcon />
+            </a>
+            <a
+              href="https://github.com/jusleya"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubIcon />
+            </a>
+          </div>
         </SocialMedia>
       </ContentWrapper>
     </FooterWrapper>
@@ -50,8 +69,12 @@ const Linha = styled.hr`
 
 const MilyPhoto = styled(Mily)`
   left: 0;
-  bottom: 115px;
+  bottom: 144px;
   position: absolute;
+
+  @media (max-width: 800px) {
+    bottom: 250px;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -62,6 +85,9 @@ const ContentWrapper = styled.div`
   justify-content: space-around;
 
   @media (max-width: 800px) {
+    gap: 80px;
+    padding: 66px 22px;
+    flex-direction: column-reverse;
   }
 
   @media (min-width: 1900px) {
@@ -85,7 +111,7 @@ const Copyright = styled.p<{ typeMode: string }>`
   `}
 `;
 
-const SocialMedia = styled.div`
+const SocialMedia = styled.div<{ typeMode: string }>`
   gap: 30px;
   display: flex;
   flex-direction: column;
@@ -100,6 +126,26 @@ const SocialMedia = styled.div`
     gap: 25px;
     display: flex;
     justify-content: center;
+
+    a {
+      text-decoration: none;
+
+      ${({ theme: { colors }, typeMode }) => css`
+        path {
+          fill: ${colors[`${typeMode}`].font};
+        }
+
+        &:hover {
+          path {
+            fill: ${colors[`${typeMode}`].hover};
+          }
+        }
+      `}
+    }
+  }
+
+  @media (max-width: 800px) {
+    align-items: center;
   }
 `;
 

@@ -37,7 +37,10 @@ export const Header = () => {
   return (
     <HeaderWrapper>
       <Logo />
-      <Menu onClick={() => (open === null ? setOpen(true) : setOpen(!open))} />
+      <Menu
+        onClick={() => (open === null ? setOpen(true) : setOpen(!open))}
+        typeMode={typeMode}
+      />
 
       <MenuMobile open={open} typeMode={typeMode}>
         <CloseIcon typeMode={typeMode} onClick={() => setOpen(!open)} />
@@ -159,11 +162,17 @@ const Logo = styled(LogoImage)`
   height: auto;
 `;
 
-const Menu = styled(MenuIcon)`
+const Menu = styled(MenuIcon)<{ typeMode: string }>`
   display: none;
 
   @media (max-width: 800px) {
     display: block;
+
+    ${({ theme: { colors }, typeMode }) => css`
+      path {
+        stroke: ${colors[`${typeMode}`].font};
+      }
+    `}
   }
 `;
 
@@ -283,7 +292,7 @@ const SwicthMode = styled.label<{ typeMode: string; open?: boolean | null }>`
 
   &:hover {
     ${({ theme: { colors }, typeMode }) => css`
-      border: 2px solid ${colors[`${typeMode}`].switchHover};
+      border: 2px solid ${colors[`${typeMode}`].hover};
     `}
     &:after {
       top: 0px;
