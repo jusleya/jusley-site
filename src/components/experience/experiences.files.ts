@@ -28,14 +28,14 @@ export const experiences = [
       'Desenvolvimento de aplicações web e participação de todo processo de início de projetos (levantamento de requisitos, reuniões, etc).',
     tools: 'HTML, CSS, React, Api Rest, JavaScript, Bulma, SASS, SCSS.',
   },
-  // {
-  //   id: 3,
-  //   company: 'GetInfo',
-  //   period: '08/2017 - 08/2018',
-  //   role: 'Estagiária em desenvolvimento Front-end',
-  //   description:
-  //     'Desenvolvimento de software com ênfase em front-end. Durante o período de estágio foi utilizado: HTML, CSS, React, Api Rest, JavaScript, Bulma, SASS, SCSS.',
-  // },
+  {
+    id: 3,
+    company: 'GetInfo',
+    period: '08/2017 - 08/2018',
+    role: 'Estagiária em desenvolvimento Front-end',
+    description:
+      'Desenvolvimento de software com ênfase em front-end. Durante o período de estágio foi utilizado: HTML, CSS, React, Api Rest, JavaScript, Bulma, SASS, SCSS.',
+  },
 ];
 
 export default experiences;

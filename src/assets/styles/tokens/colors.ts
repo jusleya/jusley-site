@@ -17,6 +17,8 @@ export const colors = {
   },
   default: {
     pink: '#d94766',
+    hoverPink: '#C62D4E',
+    shadow: 'rgba(217, 71, 102, 0.33)',
     stroke: '#373537',
   },
 };

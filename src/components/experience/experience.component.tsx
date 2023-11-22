@@ -1,23 +1,55 @@
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useTypeMode } from '../../contexts/themeMode.context';
 import Title from '../title/title.component';
+import Button from '../button/button.component';
 import { experiences } from './experiences.files';
 
 // @ts-ignore
 import { ReactComponent as CircleIcon } from '../../assets/images/icons/circle_experience.svg';
+// @ts-ignore
+import { ReactComponent as Arrow } from '../../assets/images/icons/arrow.svg';
 
 export const Experience = () => {
   const { typeMode } = useTypeMode();
+  const [currentPage, setCurrentPage] = useState(0);
+  const arrayExp = [];
+  let i = 0;
+  let arrayAux = [];
+
+  while (i <= experiences.length) {
+    for (let j = i; j < i + 3; j += 1) {
+      if (experiences[j] !== undefined) {
+        arrayAux.push(experiences[j]);
+      }
+    }
+    arrayExp.push(arrayAux);
+    arrayAux = [];
+    i += 3;
+  }
+  // console.log(arrayExp);
 
   return (
     <Wrapper typeMode={typeMode}>
-      <Title title="Experiência Profissional" id="experiencia-profissional" />
+      <TitleWrapper>
+        <Title title="Experiência Profissional" id="experiencia-profissional" />
+        <ButtonArrow
+          onClick={() => setCurrentPage(currentPage + 1)}
+          width={40}
+          height={40}
+        >
+          <Arrow />
+        </ButtonArrow>
+      </TitleWrapper>
+
       <Scroll>
         <Experiences>
-          {experiences.map(
+          {arrayExp[currentPage].map(
             ({ id, company, description, period, role, tools }) => (
               <ExperienceWrapper key={id}>
-                <Circle />
+                <Circle>
+                  <CircleIcon />
+                </Circle>
                 <div>
                   <Period>{period}</Period>
                   <Text>{role}</Text>
@@ -25,10 +57,10 @@ export const Experience = () => {
                 <Info typeMode={typeMode}>
                   <Company>{company}</Company>
                   <Text>{description}</Text>
-                  <Text style={{ marginTop: '8px' }}>
+                  <Tools>
                     <b>Ferramentas: </b>
                     {tools}
-                  </Text>
+                  </Tools>
                 </Info>
               </ExperienceWrapper>
             ),
@@ -39,7 +71,27 @@ export const Experience = () => {
   );
 };
 
-const Circle = styled(CircleIcon)``;
+const ButtonArrow = styled(Button)`
+  padding: 8px;
+`;
+
+const Circle = styled.div`
+  position: relative;
+
+  &:before {
+    top: 12px;
+    left: 12px;
+    content: '';
+    opacity: 1;
+    height: 2px;
+    width: 392px;
+    position: absolute;
+    transition:
+      opacity 0.5s ease,
+      width 0.5s ease;
+    background: ${({ theme: { colors } }) => colors.default.pink};
+  }
+`;
 
 const Company = styled.p`
   font-size: 18px;
@@ -61,6 +113,18 @@ const ExperienceWrapper = styled.div`
   width: 340px;
   display: flex;
   flex-direction: column;
+
+  &:last-child {
+    ${Circle} {
+      &:before {
+        width: 328px;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    min-width: 312px;
+  }
 `;
 
 const Info = styled.div<{ typeMode: string }>`
@@ -68,6 +132,7 @@ const Info = styled.div<{ typeMode: string }>`
   display: flex;
   height: 250px;
   padding: 16px;
+  margin-top: 9px;
   border-radius: 4px;
   position: relative;
   flex-direction: column;
@@ -108,6 +173,30 @@ const Info = styled.div<{ typeMode: string }>`
   `}
 `;
 
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Text = styled.p`
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 175%;
+  letter-spacing: -0.28px;
+`;
+
+const Period = styled(Text)`
+  ${({ theme: { colors } }) => css`
+    color: ${colors.default.pink};
+  `}
+`;
+
+const Tools = styled(Text)`
+  margin-top: 8px;
+`;
+
 const Wrapper = styled.div<{ typeMode: string }>`
   grid-area: experience;
   gap: 64px;
@@ -132,20 +221,6 @@ const Scroll = styled.div`
     width: 100%;
     overflow-x: scroll;
   }
-`;
-
-const Text = styled.p`
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 175%;
-  letter-spacing: -0.28px;
-`;
-
-const Period = styled(Text)`
-  ${({ theme: { colors } }) => css`
-    color: ${colors.default.pink};
-  `}
 `;
 
 export default Experience;

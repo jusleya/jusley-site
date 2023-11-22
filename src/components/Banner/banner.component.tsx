@@ -98,9 +98,9 @@ const Name = styled.h1`
     #d94766 34.92%,
     #c06f10 125%
   );
-  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 
   ${({ theme: { colors } }) => css`
     color: ${colors.darkMode.font};

@@ -53,10 +53,10 @@ export const Header = () => {
 
           <SwicthMode htmlFor="checkbox" typeMode={typeMode} open={open}>
             <input
-              id="checkbox"
               type="checkbox"
               checked={typeMode === 'darkMode'}
               onChange={handleOnChange}
+              aria-label="checkbox"
             />
           </SwicthMode>
         </MobileWrapper>
