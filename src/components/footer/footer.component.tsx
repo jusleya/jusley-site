@@ -137,7 +137,7 @@ const SocialMedia = styled.div<{ typeMode: string }>`
 
         &:hover {
           path {
-            fill: ${colors[`${typeMode}`].hover};
+            fill: ${colors.default.pink};
           }
         }
       `}

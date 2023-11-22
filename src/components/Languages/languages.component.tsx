@@ -9,33 +9,22 @@ export const Languages = () => {
   return (
     <Wrapper>
       <Title title="Linguagens atuais" id="linguagens-atuais" />
-      <LanguagesWrapper>
-        {languages.map(({ id, name, image, time }) => (
-          <LanguageBox key={id} typeMode={typeMode}>
-            <div dangerouslySetInnerHTML={{ __html: image }} />
-            <div>
-              <Name>{name}</Name>
-              <Time>{time}</Time>
-            </div>
-          </LanguageBox>
-        ))}
-      </LanguagesWrapper>
+      <Scroll>
+        <LanguagesWrapper>
+          {languages.map(({ id, name, image, time }) => (
+            <LanguageBox key={id} typeMode={typeMode}>
+              <div dangerouslySetInnerHTML={{ __html: image }} />
+              <div>
+                <Name>{name}</Name>
+                <Time>{time}</Time>
+              </div>
+            </LanguageBox>
+          ))}
+        </LanguagesWrapper>
+      </Scroll>
     </Wrapper>
   );
 };
-
-const LanguagesWrapper = styled.div`
-  gap: 51px;
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  justify-content: center;
-
-  @media (max-width: 800px) {
-    gap: 32px;
-    width: 1050px;
-  }
-`;
 
 const LanguageBox = styled.div<{ typeMode: string }>`
   gap: 25px;
@@ -86,11 +75,32 @@ const LanguageBox = styled.div<{ typeMode: string }>`
   `}
 `;
 
+const LanguagesWrapper = styled.div`
+  gap: 51px;
+  display: flex;
+  width: 1100px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+  @media (max-width: 800px) {
+    gap: 32px;
+    margin: 0;
+    width: 1050px;
+  }
+`;
+
 const Name = styled.h2`
   font-size: 24px;
   font-weight: 600;
   line-height: 150%;
   letter-spacing: -0.48px;
+`;
+
+const Scroll = styled.div`
+  @media (max-width: 800px) {
+    width: 100%;
+    overflow-x: scroll;
+  }
 `;
 
 const Time = styled.p`
@@ -110,7 +120,8 @@ const Wrapper = styled.div`
 
   @media (max-width: 800px) {
     gap: 40px;
-    overflow-x: scroll;
+    width: 100vw;
+    padding-inline: 24px;
   }
 
   @media (min-width: 1900px) {

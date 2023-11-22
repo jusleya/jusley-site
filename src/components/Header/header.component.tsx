@@ -28,7 +28,11 @@ export const Header = () => {
       <LinkHeader href="#linguagens-atuais" typeMode={typeMode} open={open}>
         Linguagens
       </LinkHeader>
-      <LinkHeader href="" typeMode={typeMode} open={open}>
+      <LinkHeader
+        href="#experiencia-profissional"
+        typeMode={typeMode}
+        open={open}
+      >
         Experiências
       </LinkHeader>
     </>

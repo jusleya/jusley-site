@@ -17,5 +17,6 @@ export const colors = {
   },
   default: {
     pink: '#d94766',
+    stroke: '#373537',
   },
 };
