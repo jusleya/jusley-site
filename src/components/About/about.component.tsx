@@ -10,16 +10,9 @@ export const About = () => (
   <AboutWrapper>
     <ProfileWrapper>
       <CircleIcon />
-      <div
-        style={{
-          overflow: 'hidden',
-          borderRadius: '100%',
-          width: '225px',
-          height: '210px',
-        }}
-      >
+      <ProfileZoom>
         <Profile />
-      </div>
+      </ProfileZoom>
       <RowIcon />
     </ProfileWrapper>
     <Text>
@@ -75,20 +68,25 @@ const ProfileWrapper = styled.div`
 `;
 
 const Profile = styled.figure`
-  width: 225px;
-  height: 210px;
-  margin-top: 12px;
+  width: 100%;
+  height: 100%;
   border-radius: 100%;
   position: relative;
   background-size: cover;
   background-position: center;
   background-image: url(${jusley});
-  transition: 1s;
+  transition: transform 1s;
 
   &:hover {
     transform: scale(1.5);
-    /* background-size: 140%; */
   }
+`;
+
+const ProfileZoom = styled.div`
+  overflow: hidden;
+  width: 225px;
+  height: 230px;
+  border-radius: 100%;
 `;
 
 const RowIcon = styled(Row)`

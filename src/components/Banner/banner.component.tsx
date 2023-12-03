@@ -86,7 +86,7 @@ const Dev = styled.p`
 
 const Name = styled.h1`
   font-size: 64px;
-  margin-top: 62px;
+  margin-top: 135px;
   font-weight: 800;
   position: relative;
   text-align: center;

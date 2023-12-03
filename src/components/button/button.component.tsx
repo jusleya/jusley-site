@@ -6,6 +6,7 @@ interface ButtonType {
   secondary?: boolean;
   width?: number;
   height?: number;
+  disabled?: boolean;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export const Button = ({
   secondary,
   width,
   height,
+  disabled,
   className = '',
 }: ButtonType) => (
   <ButtonStyle
@@ -25,6 +27,7 @@ export const Button = ({
     type="button"
     title="button"
     className={className}
+    disabled={disabled}
   >
     {children}
   </ButtonStyle>
@@ -34,8 +37,8 @@ const ButtonStyle = styled.button<{
   secondary?: boolean;
   width?: number;
   height?: number;
+  disabled?: boolean;
 }>`
-  cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
@@ -44,16 +47,23 @@ const ButtonStyle = styled.button<{
   text-align: center;
   border: none;
 
-  ${({ theme: { colors }, width, height }) => css`
+  ${({ theme: { colors }, width, height, disabled }) => css`
+    cursor: ${disabled ? 'not-allowed' : 'pointer'};
     color: ${colors.darkMode.font};
-    background-color: ${colors.default.pink};
+    background-color: ${disabled
+      ? `${colors.default.shadow}`
+      : `${colors.default.pink}`};
+
     width: ${width ? `${width}px` : 'auto'};
     height: ${height ? `${height}px` : '56px'};
 
-    &:hover {
-      box-shadow: 0px 8px 32px 0px ${colors.default.shadow};
-      background-color: ${colors.default.hoverPink};
-    }
+    ${!disabled &&
+    css`
+      &:hover {
+        box-shadow: 0px 8px 32px 0px ${colors.default.shadow};
+        background-color: ${colors.default.hoverPink};
+      }
+    `}
   `}
 `;
 

@@ -27,19 +27,30 @@ export const Experience = () => {
     arrayAux = [];
     i += 3;
   }
-  // console.log(arrayExp);
+  console.log(arrayExp);
 
   return (
     <Wrapper typeMode={typeMode}>
       <TitleWrapper>
         <Title title="Experiência Profissional" id="experiencia-profissional" />
-        <ButtonArrow
-          onClick={() => setCurrentPage(currentPage + 1)}
-          width={40}
-          height={40}
-        >
-          <Arrow />
-        </ButtonArrow>
+        <ButtonWrapper>
+          <Button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            width={40}
+            height={40}
+            disabled={currentPage !== 1}
+          >
+            <ArrowLeft />
+          </Button>
+          <Button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            width={40}
+            height={40}
+            disabled={currentPage === arrayExp.length - 1}
+          >
+            <Arrow />
+          </Button>
+        </ButtonWrapper>
       </TitleWrapper>
 
       <Scroll>
@@ -71,8 +82,17 @@ export const Experience = () => {
   );
 };
 
-const ButtonArrow = styled(Button)`
-  padding: 8px;
+const ArrowLeft = styled(Arrow)`
+  transform: rotate(180deg);
+`;
+
+const ButtonWrapper = styled.div`
+  gap: 24px;
+  display: flex;
+
+  button {
+    padding: 8px;
+  }
 `;
 
 const Circle = styled.div`
@@ -173,10 +193,28 @@ const Info = styled.div<{ typeMode: string }>`
   `}
 `;
 
+const Scroll = styled.div`
+  @media (max-width: 800px) {
+    width: 100%;
+    overflow-x: scroll;
+  }
+`;
+
 const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 800px) {
+    gap: 34px;
+    flex-direction: column;
+    align-items: flex-start;
+
+    ${ButtonWrapper} {
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
 `;
 
 const Text = styled.p`
@@ -213,13 +251,6 @@ const Wrapper = styled.div<{ typeMode: string }>`
   @media (min-width: 1900px) {
     width: 1240px;
     margin: 0 auto;
-  }
-`;
-
-const Scroll = styled.div`
-  @media (max-width: 800px) {
-    width: 100%;
-    overflow-x: scroll;
   }
 `;
 
