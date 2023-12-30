@@ -4,9 +4,11 @@ import Header from '../components/header/header.component';
 import Banner from '../components/banner/banner.component';
 import About from '../components/about/about.component';
 import Languages from '../components/languages/languages.component';
+import Experience from '../components/experience/experience.component';
+import Footer from '../components/footer/footer.component';
+
 // @ts-ignore
 import { ReactComponent as Gradient } from '../assets/images/icons/gradient.svg';
-import Footer from '../components/footer/footer.component';
 
 const Home = () => {
   const { typeMode } = useTypeMode();
@@ -20,6 +22,7 @@ const Home = () => {
       <GradientImage />
       <About />
       <Languages />
+      <Experience />
       <Footer />
     </Wrapper>
   );
@@ -55,6 +58,7 @@ const Wrapper = styled.div<{ typeMode: string }>`
     'banner'
     'about'
     'language'
+    'experience'
     'footer';
 
   ${({ theme: { colors }, typeMode }) => css`

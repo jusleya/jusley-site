@@ -5,15 +5,14 @@ import { ReactComponent as Circle } from '../../assets/images/icons/circle.svg';
 import { ReactComponent as Row } from '../../assets/images/icons/row-image.svg';
 import jusley from '../../assets/images/jusley.png';
 import Title from '../title/title.component';
-// @ts-ignore
-// import { ReactComponent as GradientYellow } from '../../assets/images/icons/gradient-yellow.svg';
 
 export const About = () => (
   <AboutWrapper>
-    {/* <GradientYellowImage /> */}
     <ProfileWrapper>
       <CircleIcon />
-      <Profile />
+      <ProfileZoom>
+        <Profile />
+      </ProfileZoom>
       <RowIcon />
     </ProfileWrapper>
     <Text>
@@ -49,6 +48,7 @@ const AboutWrapper = styled.div`
 
   @media (max-width: 800px) {
     gap: 40px;
+    padding-inline: 24px;
     flex-direction: column;
   }
 
@@ -63,32 +63,30 @@ const CircleIcon = styled(Circle)`
   position: absolute;
 `;
 
-// const GradientYellowImage = styled(GradientYellow)`
-//   top: 450px;
-//   width: auto;
-//   height: 700px;
-//   position: absolute;
-//   left: 330px;
-// `;
-
 const ProfileWrapper = styled.div`
   position: relative;
 `;
 
 const Profile = styled.figure`
-  width: 225px;
-  height: 210px;
-  margin-top: 12px;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
   position: relative;
   background-size: cover;
   background-position: center;
   background-image: url(${jusley});
-  transition: all 1s;
+  transition: transform 1s;
 
   &:hover {
-    background-size: 140%;
+    transform: scale(1.5);
   }
+`;
+
+const ProfileZoom = styled.div`
+  overflow: hidden;
+  width: 225px;
+  height: 230px;
+  border-radius: 100%;
 `;
 
 const RowIcon = styled(Row)`

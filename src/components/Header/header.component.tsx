@@ -22,13 +22,28 @@ export const Header = () => {
 
   const linksMenu = () => (
     <>
-      <LinkHeader href="#sobre-mim" typeMode={typeMode} open={open}>
+      <LinkHeader
+        href="#sobre-mim"
+        typeMode={typeMode}
+        open={open}
+        onClick={() => setOpen(null)}
+      >
         Sobre mim
       </LinkHeader>
-      <LinkHeader href="#linguagens-atuais" typeMode={typeMode} open={open}>
+      <LinkHeader
+        href="#linguagens-atuais"
+        typeMode={typeMode}
+        open={open}
+        onClick={() => setOpen(null)}
+      >
         Linguagens
       </LinkHeader>
-      <LinkHeader href="" typeMode={typeMode} open={open}>
+      <LinkHeader
+        href="#experiencia-profissional"
+        typeMode={typeMode}
+        open={open}
+        onClick={() => setOpen(null)}
+      >
         Experiências
       </LinkHeader>
     </>
@@ -49,10 +64,10 @@ export const Header = () => {
 
           <SwicthMode htmlFor="checkbox" typeMode={typeMode} open={open}>
             <input
-              id="checkbox"
               type="checkbox"
               checked={typeMode === 'darkMode'}
               onChange={handleOnChange}
+              aria-label="checkbox"
             />
           </SwicthMode>
         </MobileWrapper>
@@ -96,11 +111,11 @@ const HeaderWrapper = styled.nav`
   height: 73px;
   display: flex;
   padding: 24px 70px;
-  position: relative;
+  /* position: relative; */
+  position: fixed;
   align-items: center;
   background-color: transparent;
   justify-content: space-between;
-  /* position: fixed; */
 
   @media (max-width: 800px) {
     padding: 24px 32px 0;

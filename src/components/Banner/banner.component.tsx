@@ -86,7 +86,7 @@ const Dev = styled.p`
 
 const Name = styled.h1`
   font-size: 64px;
-  margin-top: 62px;
+  margin-top: 135px;
   font-weight: 800;
   position: relative;
   text-align: center;
@@ -98,9 +98,9 @@ const Name = styled.h1`
     #d94766 34.92%,
     #c06f10 125%
   );
-  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 
   ${({ theme: { colors } }) => css`
     color: ${colors.darkMode.font};
