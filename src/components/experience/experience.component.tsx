@@ -5,9 +5,7 @@ import Title from '../title/title.component';
 import Button from '../button/button.component';
 import { experiences } from './experiences.files';
 
-// @ts-ignore
 import { ReactComponent as CircleIcon } from '../../assets/images/icons/circle_experience.svg';
-// @ts-ignore
 import { ReactComponent as Arrow } from '../../assets/images/icons/arrow.svg';
 
 export const Experience = () => {

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-// @ts-ignore
+
 import { ReactComponent as Circle } from '../../assets/images/icons/circle.svg';
-// @ts-ignore
 import { ReactComponent as Row } from '../../assets/images/icons/row-image.svg';
 import jusley from '../../assets/images/jusley.png';
 import Title from '../title/title.component';
