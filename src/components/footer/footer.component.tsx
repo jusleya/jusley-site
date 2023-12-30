@@ -69,7 +69,8 @@ const MilyPhoto = styled(Mily)`
   position: absolute;
 
   @media (max-width: 800px) {
-    bottom: 250px;
+    left: 22px;
+    bottom: 270px;
   }
 `;
 
