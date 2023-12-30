@@ -7,7 +7,6 @@ import Languages from '../components/languages/languages.component';
 import Experience from '../components/experience/experience.component';
 import Footer from '../components/footer/footer.component';
 
-// @ts-ignore
 import { ReactComponent as Gradient } from '../assets/images/icons/gradient.svg';
 
 const Home = () => {

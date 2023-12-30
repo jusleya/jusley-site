@@ -2,11 +2,8 @@ import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useTypeMode } from '../../contexts/themeMode.context';
 
-// @ts-ignore
 import { ReactComponent as LogoImage } from '../../assets/images/logo.svg';
-// @ts-ignore
 import { ReactComponent as Close } from '../../assets/images/icons/close.svg';
-// @ts-ignore
 import { ReactComponent as MenuIcon } from '../../assets/images/icons/menu-mobile.svg';
 import moon from '../../assets/images/icons/moon.svg';
 import sun from '../../assets/images/icons/sun.svg';
@@ -111,8 +108,8 @@ const HeaderWrapper = styled.nav`
   height: 73px;
   display: flex;
   padding: 24px 70px;
-  /* position: relative; */
-  position: fixed;
+  position: relative;
+  /* position: fixed; */
   align-items: center;
   background-color: transparent;
   justify-content: space-between;
