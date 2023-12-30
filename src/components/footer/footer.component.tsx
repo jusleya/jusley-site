@@ -1,12 +1,8 @@
 import styled, { css } from 'styled-components';
 import { useTypeMode } from '../../contexts/themeMode.context';
-// @ts-ignore
 import { ReactComponent as Mily } from '../../assets/images/mily.svg';
-// @ts-ignore
 import { ReactComponent as CopyrightIcon } from '../../assets/images/icons/copyright.svg';
-// @ts-ignore
 import { ReactComponent as LinkedinIcon } from '../../assets/images/icons/social/linkedin.svg';
-// @ts-ignore
 import { ReactComponent as GithubIcon } from '../../assets/images/icons/social/github.svg';
 
 export const Footer = () => {
@@ -68,8 +64,8 @@ const Linha = styled.hr`
 `;
 
 const MilyPhoto = styled(Mily)`
-  left: 0;
-  bottom: 144px;
+  left: 54px;
+  bottom: 176px;
   position: absolute;
 
   @media (max-width: 800px) {

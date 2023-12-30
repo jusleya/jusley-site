@@ -8,15 +8,15 @@ export const Banner = () => {
   const { typeMode } = useTypeMode();
 
   return (
-    <>
-      <BannerWrapper src={video} loop autoPlay muted></BannerWrapper>
+    <div id="banner-position">
+      <BannerWrapper src={video} loop autoPlay muted />
       <FilterBanner typeMode={typeMode} />
       <Name>{`<Jusley Tavares />`}</Name>
       <Dev>front-end developer</Dev>
       <RowsIcon>
         <BannerRows />
       </RowsIcon>
-    </>
+    </div>
   );
 };
 
