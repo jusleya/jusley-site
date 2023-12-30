@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useTypeMode } from '../../contexts/themeMode.context';
 
@@ -11,6 +11,20 @@ import sun from '../../assets/images/icons/sun.svg';
 export const Header = () => {
   const { setTypeMode, typeMode } = useTypeMode();
   const [open, setOpen] = useState<boolean | null>(null);
+
+  const [position, setPosition] = useState(0);
+
+  useEffect(() => {
+    const bannerPosition = document.getElementById('banner-position');
+    const handleScroll = () => {
+      if (bannerPosition)
+        setPosition(bannerPosition.getBoundingClientRect().top);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   function handleOnChange() {
     if (typeMode === 'darkMode') setTypeMode('whiteMode');
@@ -47,7 +61,7 @@ export const Header = () => {
   );
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper position={position} typeMode={typeMode}>
       <Logo />
       <Menu
         onClick={() => (open === null ? setOpen(true) : setOpen(!open))}
@@ -102,19 +116,21 @@ const DeskWrapper = styled.div`
   }
 `;
 
-const HeaderWrapper = styled.nav`
+const HeaderWrapper = styled.nav<{ position: number; typeMode: string }>`
   z-index: 1;
   width: 100%;
   height: 73px;
   display: flex;
   padding: 24px 70px;
-  position: relative;
-  /* position: fixed; */
+  position: fixed;
   align-items: center;
-  background-color: transparent;
+  background-color: ${({ position, theme: { colors }, typeMode }) =>
+    position < 0 ? `${colors[`${typeMode}`].header}` : 'transparent'};
   justify-content: space-between;
+  transition: background-color 0.25s linear;
 
   @media (max-width: 800px) {
+    position: relative;
     padding: 24px 32px 0;
   }
   @media (min-width: 1900px) {

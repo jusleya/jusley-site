@@ -25,7 +25,6 @@ export const Experience = () => {
     arrayAux = [];
     i += 3;
   }
-  console.log(arrayExp);
 
   return (
     <Wrapper typeMode={typeMode}>
@@ -178,7 +177,7 @@ const Info = styled.div<{ typeMode: string }>`
 
   ${({ theme: { colors }, typeMode }) => css`
     background-color: ${colors[`${typeMode}`].neutral};
-    border: 2px solid ${colors.default.stroke};
+    border: 2px solid ${colors[`${typeMode}`].stroke};
 
     &:after {
       border-color: transparent transparent ${colors[`${typeMode}`].neutral}
@@ -186,7 +185,8 @@ const Info = styled.div<{ typeMode: string }>`
     }
 
     &:before {
-      border-color: transparent transparent ${colors.default.stroke} transparent;
+      border-color: transparent transparent ${colors[`${typeMode}`].stroke}
+        transparent;
     }
   `}
 `;
