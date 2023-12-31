@@ -125,7 +125,7 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
 
   @media (max-width: 800px) {
-    padding-inline: 24px;
+    padding-inline: 0;
   }
 
   @media (min-width: 1900px) {
@@ -148,7 +148,7 @@ const Wrapper = styled.nav<{ position: number; typeMode: string }>`
 
   @media (max-width: 800px) {
     position: relative;
-    padding: 24px 32px 0;
+    padding: 24px 24px 0;
   }
 `;
 

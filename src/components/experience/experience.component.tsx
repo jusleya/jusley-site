@@ -121,7 +121,6 @@ const Company = styled.p`
 const Experiences = styled.div`
   gap: 56px;
   display: flex;
-  width: 1132px;
   margin: 0 auto;
 `;
 
