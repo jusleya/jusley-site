@@ -118,14 +118,16 @@ const DeskWrapper = styled.div`
 `;
 
 const HeaderWrapper = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
+  padding-inline: 70px;
   justify-content: space-between;
 
   @media (max-width: 800px) {
-    width: 100%;
-    /* position: relative; */
+    padding-inline: 24px;
   }
+
   @media (min-width: 1900px) {
     width: 1240px;
     margin: 0 auto;
