@@ -61,40 +61,41 @@ export const Header = () => {
   );
 
   return (
-    <HeaderWrapper position={position} typeMode={typeMode}>
-      <Logo />
-      <Menu
-        onClick={() => (open === null ? setOpen(true) : setOpen(!open))}
-        typeMode={typeMode}
-      />
-
-      <MenuMobile open={open} typeMode={typeMode}>
-        <CloseIcon typeMode={typeMode} onClick={() => setOpen(!open)} />
-        <MobileWrapper>
-          {linksMenu()}
-
-          <SwicthMode htmlFor="checkbox" typeMode={typeMode} open={open}>
-            <input
-              type="checkbox"
-              checked={typeMode === 'darkMode'}
-              onChange={handleOnChange}
-              aria-label="checkbox"
-            />
-          </SwicthMode>
-        </MobileWrapper>
-      </MenuMobile>
-
-      <DeskWrapper>{linksMenu()}</DeskWrapper>
-
-      <SwicthMode htmlFor="checkbox" typeMode={typeMode}>
-        <input
-          id="checkbox"
-          type="checkbox"
-          checked={typeMode === 'darkMode'}
-          onChange={handleOnChange}
+    <Wrapper position={position} typeMode={typeMode}>
+      <HeaderWrapper>
+        <Logo />
+        <Menu
+          onClick={() => (open === null ? setOpen(true) : setOpen(!open))}
+          typeMode={typeMode}
         />
-      </SwicthMode>
-    </HeaderWrapper>
+        <MenuMobile open={open} typeMode={typeMode}>
+          <CloseIcon typeMode={typeMode} onClick={() => setOpen(!open)} />
+          <MobileWrapper>
+            {linksMenu()}
+
+            <SwicthMode htmlFor="checkbox" typeMode={typeMode} open={open}>
+              <input
+                type="checkbox"
+                checked={typeMode === 'darkMode'}
+                onChange={handleOnChange}
+                aria-label="checkbox"
+              />
+            </SwicthMode>
+          </MobileWrapper>
+        </MenuMobile>
+
+        <DeskWrapper>{linksMenu()}</DeskWrapper>
+
+        <SwicthMode htmlFor="checkbox" typeMode={typeMode}>
+          <input
+            id="checkbox"
+            type="checkbox"
+            checked={typeMode === 'darkMode'}
+            onChange={handleOnChange}
+          />
+        </SwicthMode>
+      </HeaderWrapper>
+    </Wrapper>
   );
 };
 
@@ -116,26 +117,36 @@ const DeskWrapper = styled.div`
   }
 `;
 
-const HeaderWrapper = styled.nav<{ position: number; typeMode: string }>`
+const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    /* position: relative; */
+  }
+  @media (min-width: 1900px) {
+    width: 1240px;
+    margin: 0 auto;
+  }
+`;
+
+const Wrapper = styled.nav<{ position: number; typeMode: string }>`
   z-index: 1;
   width: 100%;
   height: 73px;
   display: flex;
-  padding: 24px 70px;
   position: fixed;
   align-items: center;
+  justify-content: space-between;
   background-color: ${({ position, theme: { colors }, typeMode }) =>
     position < 0 ? `${colors[`${typeMode}`].header}` : 'transparent'};
-  justify-content: space-between;
   transition: background-color 0.25s linear;
 
   @media (max-width: 800px) {
     position: relative;
     padding: 24px 32px 0;
-  }
-  @media (min-width: 1900px) {
-    width: 1240px;
-    margin: 0 auto;
   }
 `;
 
@@ -209,7 +220,7 @@ const MenuMobile = styled.div<{ typeMode: string; open: boolean | null }>`
 
   @media (max-width: 800px) {
     top: 0;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     z-index: 1;
     position: absolute;
@@ -279,7 +290,7 @@ const MobileWrapper = styled.div`
   display: none;
 
   @media (max-width: 800px) {
-    gap: 58px;
+    gap: 32px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;

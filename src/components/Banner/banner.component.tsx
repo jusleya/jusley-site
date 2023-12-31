@@ -22,6 +22,7 @@ export const Banner = () => {
 
 const BannerWrapper = styled.video`
   width: 100%;
+  top: 0;
   height: 508px;
   display: flex;
   object-fit: cover;
@@ -49,6 +50,7 @@ const RowsIcon = styled.div`
 `;
 
 const FilterBanner = styled.div<{ typeMode: string }>`
+  top: 0;
   width: 100%;
   height: 508px;
   opacity: 0.75;
@@ -111,7 +113,7 @@ const Name = styled.h1`
   @media (min-width: 1900px) {
     width: 1240px;
     margin: 0 auto;
-    margin-top: 62px;
+    margin-top: 76px;
   }
 `;
 
