@@ -7,55 +7,55 @@ import bffIcon from '../../assets/images/icons/languages/bff.svg';
 import restqlIcon from '../../assets/images/icons/languages/restql.svg';
 import jestIcon from '../../assets/images/icons/languages/jest.svg';
 
-export const languages = [
-  {
-    id: 0,
-    name: 'React',
-    image: `<img src="${reactIcon}" alt="react" />`,
-    time: 'Conhecimento avançado, sendo utilizado desde 2017.',
-  },
-  {
-    id: 1,
-    name: 'Typescript',
-    image: `<img src="${typescriptIcon}" alt="typescript" />`,
-    time: 'Conhecimento avançado, sendo utilizado desde 2019.',
-  },
-  {
-    id: 2,
-    name: 'Javascript',
-    image: `<img src="${javascriptIcon}" alt="javascript" />`,
-    time: 'Conhecimento avançado, sendo utilizado desde 2017.',
-  },
-  {
-    id: 3,
-    name: 'Styled-components',
-    image: `<img src="${styledIcon}" alt="styled" />`,
-    time: 'Conhecimento avançado, sendo utilizado desde 2019.',
-  },
-  {
-    id: 4,
-    name: 'Next.js',
-    image: `<img src="${nextjsIcon}" alt="next" />`,
-    time: 'Iniciante, sendo utilizado desde 2022.',
-  },
-  {
-    id: 5,
-    name: 'Back-end for front-end',
-    image: `<img src="${bffIcon}" alt="bff" />`,
-    time: 'Iniciante, sendo utilizado desde 2022.',
-  },
-  {
-    id: 6,
-    name: 'RestQL',
-    image: `<img src="${restqlIcon}" alt="restql" />`,
-    time: 'Iniciante, sendo utilizado desde 2022.',
-  },
-  {
-    id: 7,
-    name: 'Jest',
-    image: `<img src="${jestIcon}" alt="jest" />`,
-    time: 'Iniciante, sendo utilizado desde 2022.',
-  },
-];
-
-export default languages;
+export function getLanguages(t: (key: string) => string) {
+  return [
+    {
+      id: 0,
+      name: t('languages.react.name'),
+      image: `<img src="${reactIcon}" alt="react" />`,
+      time: t('languages.react.time'),
+    },
+    {
+      id: 1,
+      name: t('languages.typeScript.name'),
+      image: `<img src="${typescriptIcon}" alt="typescript" />`,
+      time: t('languages.typeScript.time'),
+    },
+    {
+      id: 2,
+      name: t('languages.javaScript.name'),
+      image: `<img src="${javascriptIcon}" alt="javascript" />`,
+      time: t('languages.javaScript.time'),
+    },
+    {
+      id: 3,
+      name: t('languages.styledComponents.name'),
+      image: `<img src="${styledIcon}" alt="styled" />`,
+      time: t('languages.styledComponents.time'),
+    },
+    {
+      id: 4,
+      name: t('languages.next.name'),
+      image: `<img src="${nextjsIcon}" alt="next" />`,
+      time: t('languages.next.time'),
+    },
+    {
+      id: 5,
+      name: t('languages.bff.name'),
+      image: `<img src="${bffIcon}" alt="bff" />`,
+      time: t('languages.bff.time'),
+    },
+    {
+      id: 6,
+      name: t('languages.restql.name'),
+      image: `<img src="${restqlIcon}" alt="restql" />`,
+      time: t('languages.restql.time'),
+    },
+    {
+      id: 7,
+      name: t('languages.jest.name'),
+      image: `<img src="${jestIcon}" alt="jest" />`,
+      time: t('languages.jest.time'),
+    },
+  ];
+}

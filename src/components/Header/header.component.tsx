@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useTypeMode } from '../../contexts/themeMode.context';
+import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as LogoImage } from '../../assets/images/logo.svg';
 import { ReactComponent as Close } from '../../assets/images/icons/close.svg';
@@ -11,6 +12,7 @@ import sun from '../../assets/images/icons/sun.svg';
 export const Header = () => {
   const { setTypeMode, typeMode } = useTypeMode();
   const [open, setOpen] = useState<boolean | null>(null);
+  const { t } = useTranslation();
 
   const [position, setPosition] = useState(0);
 
@@ -34,28 +36,28 @@ export const Header = () => {
   const linksMenu = () => (
     <>
       <LinkHeader
-        href="#sobre-mim"
+        href={t('about.link')}
         typeMode={typeMode}
         open={open}
         onClick={() => setOpen(null)}
       >
-        Sobre mim
+        {t('sections.aboutMe')}
       </LinkHeader>
       <LinkHeader
-        href="#linguagens-atuais"
+        href={t('languages.link')}
         typeMode={typeMode}
         open={open}
         onClick={() => setOpen(null)}
       >
-        Linguagens
+        {t('sections.languages')}
       </LinkHeader>
       <LinkHeader
-        href="#experiencia-profissional"
+        href={t('experiences.link')}
         typeMode={typeMode}
         open={open}
         onClick={() => setOpen(null)}
       >
-        Experiências
+        {t('sections.professionalExperience')}
       </LinkHeader>
     </>
   );

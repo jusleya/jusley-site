@@ -1,7 +1,68 @@
 {
-  "header": {
-    "links": {
-      "aboutMe": "Sobre mim"
+  "sections": {
+    "aboutMe": "Sobre mim",
+    "languages": "Linguagens atuais",
+    "professionalExperience": "Experiência profissional"
+  },
+  "banner": {
+    "name": "<Jusley Tavares />",
+    "area": "Desenvolvedora Front-end"
+  },
+  "about": {
+    "id": "sobre-mim",
+    "link": "#sobre-mim",
+    "whoIam": "<p>Oie, me chamo Jusley. Vou me apresentar rapidamente para vocês, mas primeiramente, vou tentar te ensinar a pronúncia do meu nome: Jus-lei (sim, o y tem som de i). Se preferir, pode me chamar de Ju, fica mais fácil de lembrar!</p><p>Bom, sou formada em Ciência da Computação pela UFS e trabalho com desenvolvimento Front-end desde 2017, sou apaixonada por computação gráfica, na área de renderização realista com foco em câmeras (daí que surgiu meu amor por fotografia).</p><p>Sou fotógrafa nas horas vagas, karateca e crocheteira. Essa sou eu. E como uma pessoa que ama fotografia, karatê, crochê, computação gráfica e front-end pode agregar a você? Manda mensagem que posso te contar...</p>"
+  },
+  "languages": {
+    "id": "linguagens-atuais",
+    "link": "#linguagens-atuais",
+    "reactTime": "Conhecimento avançado, sendo utilizado desde 2017.",
+    "typescriptTime": "Conhecimento avançado, sendo utilizado desde 2019.",
+    "JavascriptTime": "Conhecimento avançado, sendo utilizado desde 2017.",
+    "styledTime": "Conhecimento avançado, sendo utilizado desde 2019.",
+    "nextTime": "Iniciante, sendo utilizado desde 2022.",
+    "bffTime": "Iniciante, sendo utilizado desde 2022.",
+    "restQlTime": "Iniciante, sendo utilizado desde 2022.",
+    "jestTime": "Iniciante, sendo utilizado desde 2022."
+  },
+  "experiences": {
+    "id": "experiencia-profissional",
+    "link": "#experiencia-profissional",
+    "tools": "Ferramentas: ",
+    "wellhub": {
+      "name": "Wellhub",
+      "period": "05/2024 - 10/2025",
+      "role": "Desenvolvedora Front-end",
+      "description": "Desenvolvimento Front-end em aplicações B2B.",
+      "tools": "HTML, CSS, React, BFF, GraphQL, TypeScript, MUI, Storybook, jest."
+    },
+    "americanas": {
+      "name": "Americanas SA",
+      "period": "09/2021 - 04/2024",
+      "role": "Desenvolvedora Front-end",
+      "description": "Desenvolvimento Front-end em aplicações B2B e B2C nos projetos de fluxo de pagamento e minha conta.",
+      "tools": "HTML, CSS, React, Next.js, BFF, RestQL, JavaScript, TypeScript, Styled-components, Storybook, jest, cypress."
+    },
+    "ioasys": {
+      "name": "Ioasys",
+      "period": "10/2019 - 08/2021",
+      "role": "Desenvolvedora Front-end",
+      "description": "Desenvolvimento Front-end com participação do comitê de front-end e mentoria de novos funcionários ensinando e auxiliando no que fosse necessário.",
+      "tools": "HTML, CSS, React, Redux, JavaScript, TypeScript, Styled-components, Storybook, testing-library."
+    },
+    "getinfo": {
+      "name": "GetInfo",
+      "period": "09/2018 - 09/2019",
+      "role": "Desenvolvedora Front-end",
+      "description": "Desenvolvimento de aplicações web e participação de todo processo de início de projetos (levantamento de requisitos, reuniões, etc).",
+      "tools": "HTML, CSS, React, Api Rest, JavaScript, Bulma, SASS, SCSS."
+    },
+    "internchip": {
+      "name": "GetInfo",
+      "period": "08/2017 - 08/2018",
+      "role": "Estagiária em desenvolvimento Front-end",
+      "description": "Desenvolvimento de software com ênfase em front-end.",
+      "tools": "HTML, CSS, React, Api Rest, JavaScript, Bulma, SASS, SCSS."
     }
   }
 }
