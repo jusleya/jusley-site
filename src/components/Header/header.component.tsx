@@ -1,18 +1,25 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/promise-function-async */
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useTypeMode } from '../../contexts/themeMode.context';
 import { useTranslation } from 'react-i18next';
 
+import { ReactComponent as Arrow } from '../../assets/images/icons/arrow.svg';
 import { ReactComponent as LogoImage } from '../../assets/images/logo.svg';
 import { ReactComponent as Close } from '../../assets/images/icons/close.svg';
 import { ReactComponent as MenuIcon } from '../../assets/images/icons/menu-mobile.svg';
+import { ReactComponent as EnFlag } from '../../assets/images/icons/en.svg';
+import { ReactComponent as PtFlag } from '../../assets/images/icons/ptBr.svg';
 import moon from '../../assets/images/icons/moon.svg';
 import sun from '../../assets/images/icons/sun.svg';
 
 export const Header = () => {
   const { setTypeMode, typeMode } = useTypeMode();
   const [open, setOpen] = useState<boolean | null>(null);
-  const { t } = useTranslation();
+  const [openDrop, setOpenDrop] = useState<boolean>(false);
+  const { t, i18n } = useTranslation();
 
   const [position, setPosition] = useState(0);
 
@@ -66,10 +73,6 @@ export const Header = () => {
     <Wrapper position={position} typeMode={typeMode}>
       <HeaderWrapper>
         <Logo />
-        <Menu
-          onClick={() => (open === null ? setOpen(true) : setOpen(!open))}
-          typeMode={typeMode}
-        />
         <MenuMobile open={open} typeMode={typeMode}>
           <CloseIcon typeMode={typeMode} onClick={() => setOpen(!open)} />
           <MobileWrapper>
@@ -88,18 +91,115 @@ export const Header = () => {
 
         <DeskWrapper>{linksMenu()}</DeskWrapper>
 
-        <SwicthMode htmlFor="checkbox" typeMode={typeMode}>
-          <input
-            id="checkbox"
-            type="checkbox"
-            checked={typeMode === 'darkMode'}
-            onChange={handleOnChange}
+        <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+          <ContentMode>
+            <SwicthMode htmlFor="checkbox" typeMode={typeMode}>
+              <input
+                id="checkbox"
+                type="checkbox"
+                checked={typeMode === 'darkMode'}
+                onChange={handleOnChange}
+              />
+            </SwicthMode>
+            <ButtonFlag
+              typeMode={typeMode}
+              onClick={() => setOpenDrop(!openDrop)}
+            >
+              {i18n.language === 'en' ? (
+                <EnFlag height={14} width="auto" />
+              ) : (
+                <PtFlag height={14} width="auto" />
+              )}
+              <ArrowLeft open={openDrop} />
+            </ButtonFlag>
+
+            {openDrop && (
+              <Dropdown typeMode={typeMode}>
+                <ContentDrop
+                  onClick={() => {
+                    i18n.changeLanguage('en');
+                    setOpenDrop(!openDrop);
+                  }}
+                >
+                  <EnFlag height={14} width="auto" />
+                  <p>{t('sections.english')}</p>
+                </ContentDrop>
+                <ContentDrop
+                  onClick={() => {
+                    i18n.changeLanguage('pt');
+                    setOpenDrop(!openDrop);
+                  }}
+                >
+                  <PtFlag height={14} width="auto" />
+                  <p>{t('sections.portuguese')}</p>
+                </ContentDrop>
+              </Dropdown>
+            )}
+          </ContentMode>
+
+          <Menu
+            onClick={() => (open === null ? setOpen(true) : setOpen(!open))}
+            typeMode={typeMode}
           />
-        </SwicthMode>
+        </div>
       </HeaderWrapper>
     </Wrapper>
   );
 };
+
+const ContentMode = styled.div`
+  display: flex;
+  gap: 16px;
+  align-items: center;
+`;
+
+const ArrowLeft = styled(Arrow)<{ open: boolean }>`
+  width: 20px;
+  transform: ${({ open }) => (open ? 'rotate(-90deg)' : 'rotate(90deg)')};
+`;
+
+const ContentDrop = styled.div`
+  gap: 8px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+
+  &:hover {
+    color: ${({ theme: { colors } }) => colors.darkMode.hover};
+  }
+`;
+
+const ButtonFlag = styled.div<{ typeMode: string }>`
+  gap: 4px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  padding: 3px 8px 1px;
+  background: ${({ theme: { colors }, typeMode }) =>
+    colors[`${typeMode}`].switch};
+  border-radius: 16px;
+`;
+
+const Dropdown = styled.div<{ typeMode: string }>`
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 8px 16px;
+  top: 55px;
+  border-radius: 8px;
+
+  ${({ theme: { colors }, typeMode }) => css`
+    background-color: ${colors[`${typeMode}`].neutral};
+    border: 2px solid ${colors[`${typeMode}`].stroke};
+  `};
+  @media (max-width: 800px) {
+    top: 65px;
+    right: 24px;
+  }
+`;
 
 const CloseIcon = styled(Close)<{ typeMode: string }>`
   ${({ theme: { colors }, typeMode }) => css`

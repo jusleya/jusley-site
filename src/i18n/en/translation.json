@@ -2,7 +2,9 @@
   "sections": {
     "aboutMe": "About me",
     "languages": "Current languages",
-    "professionalExperience": "Professional experience"
+    "professionalExperience": "Professional experience",
+    "english": "English",
+    "portuguese": "Portuguese"
   },
   "banner": {
     "name": "<Jusley Tavares />",

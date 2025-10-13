@@ -2,7 +2,9 @@
   "sections": {
     "aboutMe": "Sobre mim",
     "languages": "Linguagens atuais",
-    "professionalExperience": "Experiência profissional"
+    "professionalExperience": "Experiência profissional",
+    "english": "Inglês",
+    "portuguese": "Português"
   },
   "banner": {
     "name": "<Jusley Tavares />",
@@ -16,14 +18,38 @@
   "languages": {
     "id": "linguagens-atuais",
     "link": "#linguagens-atuais",
-    "reactTime": "Conhecimento avançado, sendo utilizado desde 2017.",
-    "typescriptTime": "Conhecimento avançado, sendo utilizado desde 2019.",
-    "JavascriptTime": "Conhecimento avançado, sendo utilizado desde 2017.",
-    "styledTime": "Conhecimento avançado, sendo utilizado desde 2019.",
-    "nextTime": "Iniciante, sendo utilizado desde 2022.",
-    "bffTime": "Iniciante, sendo utilizado desde 2022.",
-    "restQlTime": "Iniciante, sendo utilizado desde 2022.",
-    "jestTime": "Iniciante, sendo utilizado desde 2022."
+    "react": {
+      "name": "React",
+      "time": "Conhecimento avançado, sendo utilizado desde 2017."
+    },
+    "typeScript": {
+      "name": "TypeScript",
+      "time": "Conhecimento avançado, sendo utilizado desde 2019."
+    },
+    "javaScript": {
+      "name": "JavaScript",
+      "time": "Conhecimento avançado, sendo utilizado desde 2017."
+    },
+    "styledComponents": {
+      "name": "Styled-components",
+      "time": "Conhecimento avançado, sendo utilizado desde 2019."
+    },
+    "next": {
+      "name": "Next.js",
+      "time": "Iniciante, sendo utilizado desde 2022."
+    },
+    "bff": {
+      "name": "Back-end for front-end",
+      "time": "Iniciante, sendo utilizado desde 2022."
+    },
+    "restql": {
+      "name": "RestQL",
+      "time": "Iniciante, sendo utilizado desde 2022."
+    },
+    "jest": {
+      "name": "Jest",
+      "time": "Iniciante, sendo utilizado desde 2022."
+    }
   },
   "experiences": {
     "id": "experiencia-profissional",
