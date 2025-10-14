@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled, { css } from 'styled-components';
 import { useTypeMode } from '../../contexts/themeMode.context';
 import Title from '../title/title.component';
 import Button from '../button/button.component';
-import { experiences } from './experiences.files';
+import { getExperiences } from './experiences.files';
 
 import { ReactComponent as CircleIcon } from '../../assets/images/icons/circle_experience.svg';
 import { ReactComponent as Arrow } from '../../assets/images/icons/arrow.svg';
@@ -11,6 +12,9 @@ import { ReactComponent as Arrow } from '../../assets/images/icons/arrow.svg';
 export const Experience = () => {
   const { typeMode } = useTypeMode();
   const [currentPage, setCurrentPage] = useState(0);
+  const { t } = useTranslation();
+  const experiences = getExperiences(t);
+
   const arrayExp = [];
   let i = 0;
   let arrayAux = [];
@@ -29,7 +33,10 @@ export const Experience = () => {
   return (
     <Wrapper typeMode={typeMode}>
       <TitleWrapper>
-        <Title title="Experiência Profissional" id="experiencia-profissional" />
+        <Title
+          title={t('sections.professionalExperience')}
+          id={t('experiences.id')}
+        />
         <ButtonWrapper>
           <Button
             onClick={() => setCurrentPage(currentPage - 1)}
@@ -66,7 +73,7 @@ export const Experience = () => {
                   <Company>{company}</Company>
                   <Text>{description}</Text>
                   <Tools>
-                    <b>Ferramentas: </b>
+                    <b>{t('experiences.tools')}</b>
                     {tools}
                   </Tools>
                 </Info>

@@ -1,14 +1,17 @@
 import styled, { css } from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { useTypeMode } from '../../contexts/themeMode.context';
 import Title from '../title/title.component';
-import { languages } from './languages.files';
+import { getLanguages } from './languages.files';
 
 export const Languages = () => {
   const { typeMode } = useTypeMode();
+  const { t } = useTranslation();
+  const languages = getLanguages(t);
 
   return (
     <Wrapper>
-      <Title title="Linguagens atuais" id="linguagens-atuais" />
+      <Title title={t('sections.languages')} id={t('languages.id')} />
       <Scroll>
         <LanguagesWrapper>
           {languages.map(({ id, name, image, time }) => (

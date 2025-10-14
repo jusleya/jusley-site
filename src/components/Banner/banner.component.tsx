@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { useTypeMode } from '../../contexts/themeMode.context';
 
 import { ReactComponent as BannerRows } from '../../assets/images/icons/banner-rows.svg';
@@ -6,13 +7,14 @@ import video from '../../assets/videos/banner.mp4';
 
 export const Banner = () => {
   const { typeMode } = useTypeMode();
+  const { t } = useTranslation();
 
   return (
     <div id="banner-position">
       <BannerWrapper src={video} loop autoPlay muted />
       <FilterBanner typeMode={typeMode} />
-      <Name>{`<Jusley Tavares />`}</Name>
-      <Dev>front-end developer</Dev>
+      <Name>{t('banner.name')}</Name>
+      <Dev>{t('banner.area')}</Dev>
       <RowsIcon>
         <BannerRows />
       </RowsIcon>
