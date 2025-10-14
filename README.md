@@ -21,8 +21,8 @@ This project showcases my professional work, experience, and contact information
 
 | Task | Status |
 |------|---------|
-| 🌍 Add **English version** of the site | ⏳ In progress |
-| 🧩 Add unit and integration tests | 🟩 Planned |
+| 🌍 Add **English version** of the site | ✅ Done |
+| 🧩 Add unit and integration tests | ⏳ In progress |
 | ⚛️ Upgrade to the latest React version | 🟩 Planned |
 | ⚡ Improve performance & accessibility | ⬜ Pending |
 
@@ -32,16 +32,16 @@ This project showcases my professional work, experience, and contact information
 
 ```bash
 # Clone this repository
-git clone https://github.com/yourusername/jusley.dev.git
+git clone https://github.com/yourusername/jusley-site.git
 
 # Go to the project directory
-cd jusley.dev
+cd jusley-dev
 
 # Install dependencies
-npm install
+yarn
 
 # Start the development server
-npm run dev
+yarn start
 ```
 ---
 
