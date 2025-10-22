@@ -20,14 +20,14 @@ export const HeaderMobile = ({ open, menuOpen }: HeaderMobileType) => {
       <S.CloseIcon typeMode={typeMode} onClick={menuOpen} />
       <S.LinksWrapper>
         <HeaderLinks onClick={menuOpen} open={open} />
-        <S.SwicthMode htmlFor="checkbox" typeMode={typeMode} open={open}>
+        <S.SwitchMode htmlFor="checkbox" typeMode={typeMode} open={open}>
           <input
             type="checkbox"
             checked={typeMode === 'darkMode'}
             onChange={handleOnChange}
             aria-label="checkbox"
           />
-        </S.SwicthMode>
+        </S.SwitchMode>
       </S.LinksWrapper>
     </S.MenuMobile>
   );

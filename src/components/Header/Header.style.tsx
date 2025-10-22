@@ -52,7 +52,7 @@ export const PositionLanguage = styled.div`
   align-items: center;
 `;
 
-export const SwicthMode = styled.label<{
+export const SwitchMode = styled.label<{
   typeMode: string;
   open?: boolean | null;
 }>`

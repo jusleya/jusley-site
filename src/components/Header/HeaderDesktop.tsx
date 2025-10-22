@@ -19,14 +19,14 @@ export const HeaderDesktop = ({ children }: HeaderDesktopType) => {
         <HeaderLinks />
       </S.LinksWrapper>
       <S.PositionLanguage>
-        <S.SwicthMode htmlFor="checkbox" typeMode={typeMode}>
+        <S.SwitchMode htmlFor="checkbox" typeMode={typeMode}>
           <input
             id="checkbox"
             type="checkbox"
             checked={typeMode === 'darkMode'}
             onChange={handleOnChange}
           />
-        </S.SwicthMode>
+        </S.SwitchMode>
         {children}
       </S.PositionLanguage>
     </>
